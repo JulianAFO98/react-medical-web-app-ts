@@ -8,9 +8,10 @@ export function Navbar({ options }: NavProps) {
         <ul className="nav-list">
             {
 
-                options.map(option => {
+                options.map((option, index) => {
+                    //Aqui uso index ya que se que no cambiara la lista, aunque no es lo recomendado
                     return (
-                        <li>
+                        <li key={index}>
                             <a href="#">{option}</a>
                         </li>
                     )

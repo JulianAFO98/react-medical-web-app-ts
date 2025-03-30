@@ -1,6 +1,7 @@
 import { Title } from "../components/Title"
 import { Navbar } from "../components/Navbar"
 import { IdCard } from "../assets/icons";
+import { AuthForms } from "../components/AuthForm";
 
 const OPTIONS: String[] = ["INGRESAR", "VIDEOLLAMADA"];
 
@@ -19,17 +20,17 @@ export function Home() {
                     <h2>Mi HI</h2>
                 </header>
                 <section className="panel">
-                    <div className="top-panel"></div>
-                    <div className="mid-panel">
-                        <div className="mid-panel one"></div>
-                        <div className="mid-panel two"></div>
+                    <div className="top-panel">
+                        <h2>Atencion</h2>
+                        <p>Si es la primera vez que ingresa debera registrarse </p>
                     </div>
+                    <AuthForms />
                     <strong className="text-panel"></strong>
                     <div className="panel-apps"></div>
                 </section>
             </main>
             <footer>
-                Contactos:
+                <h2>Contactos: <a href="https://github.com/JulianAFO98">GitHub</a></h2>
             </footer>
         </>
     )
