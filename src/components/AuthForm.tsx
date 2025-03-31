@@ -1,26 +1,29 @@
-import { registerUser } from "../logic/fetch";
+
 import { useNavigate } from "react-router-dom";
+import { userStore } from "../store/userStore";
+import { useForm } from "../hooks/useForm";
 
 export const AuthForms = () => {
     const navigate = useNavigate();
+    const { updateRegForm } = useForm();
+    const { registerError } = userStore.getState();
 
     const handleRegister = async (e: React.FormEvent) => {
         e.preventDefault();
-
-        const formData = new FormData(e.target as HTMLFormElement);
-        const result = await registerUser(formData);
-        if (result) {
-            //Cambiar logica para llevar al home
-            alert("Se ha registrado exitosamente");
-            navigate("/");
-        }
+        const form = e.target as HTMLFormElement;
+        await updateRegForm({ form });
+        navigate("/");
     }
 
     return (
         <div className="mid-panel">
             <div className="form-container">
                 <h2>Registro</h2>
-                <form onSubmit={handleRegister}>
+                <form onSubmit={handleRegister} method="POST">
+                    {
+                        registerError && (
+                            <p>{registerError}</p>
+                        )}
                     <div className="form-group">
                         <label>Nombre</label>
                         <input name="firstname" type="text" />
